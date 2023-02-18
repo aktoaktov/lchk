@@ -1,0 +1,143 @@
+html, body
+  margin: 0
+  font-family: Arial, sans-serif
+
+main
+  max-width: 600px
+  margin: 24px auto
+
+.proc
+  flex: 0 1
+
+  position: relative
+  width: 114px
+  height: 114px
+  margin: 32px
+
+
+  svg
+    width: 114px
+    height: 114px
+
+
+  .bg
+    fill: none
+    stroke-width: 10px
+    stroke: #eee
+
+
+  .progress
+    fill: none
+    stroke-width: 10px
+    stroke: #1ba3ec
+    stroke-linecap: round
+    stroke-dasharray: 326.56
+    stroke-dashoffset: 0
+    transform: rotate(-90deg)
+    transform-origin: 50% 50%
+    animation: progress 1.5s ease-in-out
+
+
+  .text
+    position: absolute
+    width: 100%
+    top: 37px
+    font-size: 24px
+    text-align: center
+    font-weight: 400
+    line-height: 22px
+
+  @keyframes progress
+    from
+      stroke-dashoffset: 326.56
+    to
+      stroke-dashoffset: 0
+
+.hdata
+  flex: 1 0
+
+header
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  h1
+    font-size: xx-large
+    margin: 0 0 12px
+
+  h2
+    a
+      margin-right: 24px
+      text-decoration: none
+
+    span
+      color: #aaa
+      font-family: Consolas, monospace
+
+    font-size: large
+    font-weight: normal
+    margin: 10px 0
+
+content
+  .tabs
+    &, ul
+      width: 100%
+      display: block
+
+    ul
+      list-style: none
+
+      &.fl-left
+        float: left
+
+
+      &.fl-right
+        float: right
+
+      li
+        display: inline-block
+        float: left
+
+        a
+          display: block
+          padding: 10px 20px
+          color: #101010
+          text-decoration: none
+
+          border-radius: 8px
+
+          &:hover,
+          &:focus
+            background: #fafafa
+
+          &.active
+            background: #eeeeee
+
+    .tabs-content
+      width: 100%
+      margin-top: 10px
+      float: left
+
+      overflow: scroll
+      height: 40vh
+
+      & > div:not(:first-child)
+        display: none
+
+  .e
+    background: #fff5f5
+    border-radius: 8px
+    border: 2px solid red
+    padding: 8px 16px
+    margin: 16px 0
+
+  .w
+    background: #ffffe7
+    border-radius: 8px
+    border: 2px solid #d9d936
+    padding: 8px 16px
+    margin: 16px 0
+
+
+a
+  color: #ff9f16

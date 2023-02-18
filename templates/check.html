@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <style>
+        .progress {
+            stroke: {% if dist >= 5 %}#ec1b1b{% elif dict >= 4 %}#ff9f16{% elif dict >= 3 %}{% elif dict >= 2 %}{% elif dict >= 1 %}{% endif %} !important;
+        }
+    </style>
+
+    <main>
+        <header>
+            <div class="proc">
+                <div class="text">
+                    12/3
+                </div>
+                <svg>
+                    <circle class="bg" cx="57" cy="57" r="52"></circle>
+                    <circle class="progress" cx="57" cy="57" r="52"></circle>
+                </svg>
+            </div>
+            <div class="hdata">
+                <h1>{{ verdict }}</h1>
+                <h2><a>Заголовок страницы</a><span>127.0.0.1</span></h2>
+                <h2>Название компании</h2>
+            </div>
+        </header>
+        <content>
+            <div class="tabs">
+                <ul class="fl-left">
+                    <li><a class="active" data-tab="#1" href="#">Основное</a></li>
+                    <li><a data-tab="#2" href="#">Сервер</a></li>
+                    <li><a data-tab="#3" href="#">Уязвимости</a></li>
+                    <li><a data-tab="#4" href="#">Песочница</a></li>
+                </ul>
+                <div class="tabs-content">
+                    <div id="1">
+                        {% for e in main %}
+                            <div class="{% if e[0] < 1 %}w{% else %}e{% endif %}">
+                                {{ e[1] }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="2">
+                        {% for e in server %}
+                            <div class="{% if e[0] < 1 %}w{% else %}e{% endif %}">
+                                {{ e[1] }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="3">
+                        {% for e in pens %}
+                            <div class="{% if e[0] < 1 %}w{% else %}e{% endif %}">
+                                {{ e[1] }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="4">
+                        {% for e in sandbox %}
+                            <div class="{% if e[0] < 1 %}w{% else %}e{% endif %}">
+                                {{ e[1] }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </content>
+    </main>
+
+    <script>
+        $('.tabs').find('ul li > a').on('click', function () {
+            var $data_id = $(this).data('tab');
+
+            $(this).closest('ul').find('li > a').each(function () {
+                $(this).removeClass('active');
+            });
+
+            $('.tabs-content > div').each(function () {
+                $(this).hide();
+            });
+
+            $($data_id).fadeIn(200);
+            $(this).addClass('active');
+
+            return false;
+        });
+    </script>
+{% endblock %}
